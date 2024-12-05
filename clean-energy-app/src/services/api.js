@@ -19,6 +19,11 @@ export const login = async (credentials) => {
   return response.data;
 };
 
+export const register = async (credentials) => {
+  const response = await api.post('/auth/register', credentials);
+  return response.data;
+};
+
 export const getEnergyConsumptionData = async () => {
   const response = await api.get('/api/energy-consumption');
   return response.data;
@@ -26,11 +31,6 @@ export const getEnergyConsumptionData = async () => {
 
 export const getRenewableGrowthData = async () => {
   const response = await api.get('/api/renewable-growth');
-  return response.data;
-};
-
-export const register = async (credentials) => {
-  const response = await api.post('/auth/register', credentials);
   return response.data;
 };
 

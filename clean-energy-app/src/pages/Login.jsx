@@ -2,14 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { login } from '../services/api';
-import { 
-  Box, 
-  TextField, 
-  Button, 
-  Typography, 
-  Container, 
-  Paper 
-} from '@mui/material';
+import { Box, TextField, Button, Typography, Container, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
@@ -32,25 +25,9 @@ const Login = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Paper 
-        elevation={3} 
-        sx={{ 
-          marginTop: 8, 
-          padding: 4, 
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center' 
-        }}
-      >
-        <Typography component="h1" variant="h5">
-          Clean Energy Innovation Login
-        </Typography>
-        <Box 
-          component="form" 
-          onSubmit={handleSubmit} 
-          sx={{ mt: 1 }}
-          noValidate
-        >
+      <Paper elevation={3} sx={{ marginTop: 8, padding: 4 }}>
+        <Typography component="h1" variant="h5">Login</Typography>
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -62,7 +39,6 @@ const Login = () => {
             autoFocus
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            aria-label="Username input"
           />
           <TextField
             margin="normal"
@@ -75,27 +51,12 @@ const Login = () => {
             autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            aria-label="Password input"
           />
-          {error && (
-            <Typography color="error" sx={{ mt: 1 }}>
-              {error}
-            </Typography>
-          )}
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            aria-label="Sign in"
-          >
-            Sign In
-          </Button>
+          {error && <Typography color="error">{error}</Typography>}
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>Sign In</Button>
           <Typography variant="body2" align="center">
             {"Don't have an account? "}
-            <Link to="/register" style={{ textDecoration: 'none', color: 'blue' }}>
-              Sign Up
-            </Link>
+            <Link to="/register">Sign Up</Link>
           </Typography>
         </Box>
       </Paper>

@@ -13,6 +13,7 @@ function App() {
     <Router>
       <AuthProvider>
         <div className="App">
+          <Navbar />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -20,15 +21,12 @@ function App() {
               path="/*"
               element={
                 <ProtectedRoute>
-                  <>
-                    <Navbar />
-                    <Routes>
-                      <Route path="/dashboard" element={<Dashboard />} />
-                      <Route path="/summary" element={<Summary />} />
-                      <Route path="/reports" element={<Reports />} />
-                      <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                    </Routes>
-                  </>
+                  <Routes>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/summary" element={<Summary />} />
+                    <Route path="/reports" element={<Reports />} />
+                    <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                  </Routes>
                 </ProtectedRoute>
               }
             />

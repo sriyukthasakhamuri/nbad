@@ -7,7 +7,6 @@ const seedData = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log('MongoDB connected successfully');
 
-    // Sample data
     const energyData = [
       { type: 'consumption', year: 2018, solar: 450, wind: 600 },
       { type: 'consumption', year: 2019, solar: 580, wind: 720 },

@@ -1,69 +1,21 @@
-import { useState, useEffect } from 'react';
-import { 
-  LineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  Legend, 
-  ResponsiveContainer 
-} from 'recharts';
-import { Typography, Paper, Box } from '@mui/material';
-import { getEnergyConsumptionData } from '../../services/api';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { Typography } from '@mui/material';
 
-const EnergyConsumptionChart = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getEnergyConsumptionData();
-        setData(response);
-      } catch (error) {
-        console.error('Error fetching energy consumption data:', error);
-      }
-    };
-    fetchData();
-  }, []);
+const EnergyConsumptionChart = ({ data }) => {
+  // Check if data is empty and return a message if so
+  if (!data || data.length === 0) {
+    return <Typography>No data available for the chart.</Typography>;
+  }
 
   return (
-    <Paper elevation={3} sx={{ p: 3, my: 4 }}>
-      <Typography variant="h6" gutterBottom>
-        Global Clean Energy Consumption Trends
-      </Typography>
-      <Box sx={{ height: 400, width: '100%' }}>
-        <ResponsiveContainer>
-          <LineChart
-            data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line 
-              type="monotone" 
-              dataKey="solar" 
-              stroke="#8884d8" 
-              name="Solar Energy"
-            />
-            <Line 
-              type="monotone" 
-              dataKey="wind" 
-              stroke="#82ca9d" 
-              name="Wind Energy"
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </Box>
-      <Typography variant="body2" sx={{ mt: 2 }}>
-        This chart shows the growth in global clean energy consumption, 
-        highlighting the increasing adoption of solar and wind energy sources 
-        over the past decade. Data sourced from International Energy Agency (IEA).
-      </Typography>
-    </Paper>
+    <LineChart width={600} height={300} data={data}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Line type="monotone" dataKey="consumption" stroke="#8884d8" />
+    </LineChart>
   );
 };
 

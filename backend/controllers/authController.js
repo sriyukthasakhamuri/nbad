@@ -7,29 +7,20 @@ const login = async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    console.log('Login attempt:', { username, password });
-
     // Find the user by username
     const user = await User.findOne({ username });
     if (!user) {
-      console.log('User not found');
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
     // Check if the password is correct
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      console.log('Password does not match');
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
     // Generate a token
-    const token = jwt.sign(
-      { username: user.username },
-      process.env.JWT_SECRET,
-      { expiresIn: '24h' }
-    );
-
+    const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET, { expiresIn: '24h' });
     res.json({ token });
   } catch (error) {
     console.error('Error logging in:', error);

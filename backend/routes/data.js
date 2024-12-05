@@ -6,4 +6,4 @@ const auth = require('../middleware/auth');
 router.get('/energy-consumption', auth, getEnergyConsumption);
 router.get('/renewable-growth', auth, getRenewableGrowth);
 
-module.exports = router;
+module.exports = router;    
