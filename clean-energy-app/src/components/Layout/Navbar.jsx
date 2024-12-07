@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Button, Box, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
@@ -6,9 +6,12 @@ const Navbar = () => {
   const { logout, token } = useAuth();
 
   return (
-    <AppBar position="static" role="navigation">
+    <AppBar position="static" sx={{ backgroundColor: '#1976d2' }} role="navigation">
       <Toolbar>
-        <Box sx={{ flexGrow: 1, display: 'flex', gap: 2 }}>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          Clean Energy App
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 2 }}>
           {token && (
             <>
               <Button component={Link} to="/dashboard" color="inherit">Dashboard</Button>

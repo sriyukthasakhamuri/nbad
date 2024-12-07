@@ -23,9 +23,9 @@ const Summary = () => {
   }, []);
 
   return (
-    <Container component="main" sx={{ mt: 4 }}>
+    <Container component="main" sx={{ mt: 4 }} role="main">
       <Typography variant="h4" gutterBottom>Summary</Typography>
-      <EnergyConsumptionChart data={data} />
+      <EnergyConsumptionChart data={data} aria-label="Energy Consumption Chart" />
       <Typography paragraph>
         This chart shows the energy consumption data over time. Source: [Your Source Here].
       </Typography>

@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+
+.AppBar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.Toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.NavButton {
+  transition: background-color 0.3s ease;
+}
+
+.NavButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.NavTitle {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+}

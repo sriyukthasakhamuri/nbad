@@ -23,9 +23,9 @@ const Reports = () => {
   }, []);
 
   return (
-    <Container component="main" sx={{ mt: 4 }}>
+    <Container component="main" sx={{ mt: 4 }} role="main">
       <Typography variant="h4" gutterBottom>Reports</Typography>
-      <RenewableGrowthChart data={data} />
+      <RenewableGrowthChart data={data} aria-label="Renewable Growth Chart" />
       <Typography paragraph>
         This chart shows the renewable energy growth data. Source: [Your Source Here].
       </Typography>
